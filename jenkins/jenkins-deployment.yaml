@@ -24,3 +24,28 @@ spec:
           emptyDir: {}
 
 
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jira
+  namespace: jenkins
+spec:
+          
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jira
+    spec:
+      containers:
+      - name: jira
+        image: jira-software
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+          - name: jira-volume
+            mountPath: /var/atlassian/application-data/jira
+      volumes:
+        - name: jira-volume
+          emptyDir: {}
