@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: nexus
-  namespace: devops
+  namespace: devops-tools
 spec:
   replicas: 1
   template:
@@ -12,12 +12,7 @@ spec:
     spec:
       containers:
         - name: nexus
-          image: sonatype/nexus:latest
-          env:
-          - name: MAX_HEAP
-            value: "800m"
-          - name: MIN_HEAP
-            value: "300m"
+          image: sonatype/nexus3:latest
           resources:
             limits:
               memory: "4Gi"
@@ -29,7 +24,7 @@ spec:
             - containerPort: 8081
           volumeMounts:
             - name: nexus-data
-              mountPath: /sonatype-work
+              mountPath: /nexus-data
       volumes:
         - name: nexus-data
           emptyDir: {}
