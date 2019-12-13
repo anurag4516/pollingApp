@@ -10,7 +10,10 @@ pipeline {
          steps {
             echo '-----------------Building Application-------------------'
             // Predefined Variables we can see at localhost:8080/env-vars.html
-            echo 'Build detaisl are : Build Number $BUILD_NUMBER'
+            // Single quotes will not print env variable value 
+            echo 'Build details in single quotes are : Build Number $BUILD_NUMBER'
+            // Duoble quotes will  print env variable value 
+             echo "Build details in Duoble quotes are : Build Number $BUILD_NUMBER"
             
          }
       }
