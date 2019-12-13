@@ -5,8 +5,13 @@ pipeline {
       
       
       stage('Build Application') {
+         // For running commands on windows we use bat --example bat "cd"
+         
          steps {
             echo '-----------------Building Application-------------------'
+            // Predefined Variables we can see at localhost:8080/env-vars.html
+            echo 'Build detaisl are : Build Number $BUILD_NUMBER'
+            
          }
       }
       
