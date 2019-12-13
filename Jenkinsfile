@@ -5,16 +5,10 @@ pipeline {
    }
    // Adding Parameters
    parameters{
-      string {
-            name="ToolName",
-            defaultValue="MyJenkins"  ,
-            description="Which Tool we are Using"   
-      },
-         boolean {
-                name="SONAR",
-                defaultValue="true",
-                description="Whether to generate SONAR Reports"
-         }   
+     
+         booleanParam( name: 'SONAR',          defaultValue: 'true',          description: 'Whether to generate SONAR Reports'          )   
+         string(name: 'TOOL' , defaultValue: 'Devops' , description: 'Devops Tool')
+         choice(        name: 'myParameter',         choices: "Option1\nOption2",         description: 'interesting stuff' )
       
    }
 
@@ -30,7 +24,7 @@ pipeline {
             // Single quotes will not print env variable value 
             echo 'Build details in single quotes are : Build Number $BUILD_NUMBER'
             // Duoble quotes will  print env variable value 
-            echo "Build details in Duoble quotes are : Build Number $BUILD_NUMBER  , $toollused,${params.ToolName},$(params.SONAR}"
+            echo "Build details in Duoble quotes are : Build Number $BUILD_NUMBER  , $toollused,${params.SONAR},${params.myParameter}"
             
          }
       }
