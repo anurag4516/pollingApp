@@ -11,6 +11,13 @@ pipeline {
          choice(        name: 'myParameter',         choices: "Option1\nOption2",         description: 'interesting stuff' )
       
    }
+   //options
+   options {
+   // Want to retry Build if failed
+     // retry(2)
+    // Deleting Old Build logs  
+      buildDiscarder(logRotator(numToKeepStr:'8'))
+   }
 
    stages {
       
