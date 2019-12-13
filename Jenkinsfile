@@ -1,5 +1,8 @@
 pipeline {
    agent any
+   environment {
+         toollused ="Jenkins" 
+   }
 
    stages {
       
@@ -13,7 +16,7 @@ pipeline {
             // Single quotes will not print env variable value 
             echo 'Build details in single quotes are : Build Number $BUILD_NUMBER'
             // Duoble quotes will  print env variable value 
-             echo "Build details in Duoble quotes are : Build Number $BUILD_NUMBER"
+             echo "Build details in Duoble quotes are : Build Number $BUILD_NUMBER  , $toollused"
             
          }
       }
