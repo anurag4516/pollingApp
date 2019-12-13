@@ -3,6 +3,20 @@ pipeline {
    environment {
          toollused ="Jenkins" 
    }
+   // Adding Parameters
+   parameters{
+      string {
+            name="ToolName",
+            defaultValue="MyJenkins"  ,
+            description="Which Tool we are Using"   
+      },
+         boolean {
+                name="SONAR",
+                defaultValue="true",
+                description="Whether to generate SONAR Reports"
+         }   
+      
+   }
 
    stages {
       
@@ -16,7 +30,7 @@ pipeline {
             // Single quotes will not print env variable value 
             echo 'Build details in single quotes are : Build Number $BUILD_NUMBER'
             // Duoble quotes will  print env variable value 
-             echo "Build details in Duoble quotes are : Build Number $BUILD_NUMBER  , $toollused"
+            echo "Build details in Duoble quotes are : Build Number $BUILD_NUMBER  , $toollused,${params.ToolName},$(params.SONAR}"
             
          }
       }
