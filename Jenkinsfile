@@ -17,6 +17,7 @@ pipeline {
      // retry(2)
     // Deleting Old Build logs  
       buildDiscarder(logRotator(numToKeepStr:'8'))
+      disableConcurrentBuilds()
    }
 
    stages {
