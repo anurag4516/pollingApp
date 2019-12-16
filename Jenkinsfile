@@ -20,6 +20,8 @@ pipeline {
       disableConcurrentBuilds()
       // Adding Timeout for builds
       timeout(time:10 , unit:'MINUTES')
+      // Adding timestamps
+      timestamps()
    }
 
    stages {
