@@ -60,7 +60,18 @@ pipeline {
          steps {
             echo '-----------------Deploying Application-------------------'
             // Triggering another job 
+            
+            script
+            {
             //build ('Deploy')
+            // Getting status Of Another Build
+            // result = build('Deploy').result
+           /* If (result='FAILURE')
+               {
+                  currentBuild.result='UNSTABLE'
+               }*/
+            }
+       
             
          }
       }
