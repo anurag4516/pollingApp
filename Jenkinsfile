@@ -47,24 +47,24 @@ pipeline {
       }
       
       stage('Test Application') {
-         parellel
+         parallel
          {
-            stage('Parellel 1 --- UI')
+            stage('Parallel 1 --- UI')
             {
                steps {
-            echo '-----------------Testing Application-------------------'
-            echo '-------------Running Automated Test -----'
-            echo ' ----------- Analysing Results -----------'
-         }
+                        echo '-----------------Testing Application-------------------'
+                        echo '-------------Running Automated Test -----'
+                        echo ' ----------- Analysing Results -----------'
+                    }
             }
             
-            stage('Parellel 2--Backend')
+            stage('Parallel 2--Backend')
             {
                steps {
-            echo '-----------------Testing Application-------------------'
-            echo '-------------Running Automated Test -----'
-            echo ' ----------- Analysing Results -----------'
-         }
+                    echo '-----------------Testing Application-------------------'
+                    echo '-------------Running Automated Test -----'
+                    echo ' ----------- Analysing Results -----------'
+                     }
             }
          }
          
@@ -87,8 +87,8 @@ pipeline {
             echo '-----------------Deploying Application-------------------'
             // Triggering another job 
             
-            script
-            {
+            sh '''
+            
             //build ('Deploy')
             // Getting status Of Another Build
             // result = build('Deploy').result
@@ -96,8 +96,8 @@ pipeline {
                {
                   currentBuild.result='UNSTABLE'
                }*/
-            }
-       
+            
+            '''
             
          }
       }
