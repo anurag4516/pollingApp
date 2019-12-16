@@ -18,6 +18,8 @@ pipeline {
     // Deleting Old Build logs  
       buildDiscarder(logRotator(numToKeepStr:'8'))
       disableConcurrentBuilds()
+      // Adding Timeout for builds
+      timeout(time:10 , unit:'MINUTES')
    }
 
    stages {
