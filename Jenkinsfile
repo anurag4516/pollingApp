@@ -1,5 +1,9 @@
 pipeline {
    agent any
+  /* Triggering build every min
+  trigger {
+      cron('* * * * *')
+   }*/
    environment {
          toollused ="Jenkins" 
    }
@@ -39,14 +43,36 @@ pipeline {
             echo "Build details in Duoble quotes are : Build Number $BUILD_NUMBER  , $toollused,${params.SONAR},${params.myParameter}"
             
          }
+         
       }
       
       stage('Test Application') {
-         steps {
+         parellel
+         {
+            stage('Parellel 1 --- UI')
+            {
+               steps {
             echo '-----------------Testing Application-------------------'
             echo '-------------Running Automated Test -----'
             echo ' ----------- Analysing Results -----------'
          }
+            }
+            
+            stage('Parellel 2--Backend')
+            {
+               steps {
+            echo '-----------------Testing Application-------------------'
+            echo '-------------Running Automated Test -----'
+            echo ' ----------- Analysing Results -----------'
+         }
+            }
+         }
+         
+         /*
+         There Cannot be multiple Steps inside a stage
+         steps {
+         echo '---- Checking For  Parellel -------------'
+         }*/
       }
       
       stage('Dockerizing Application') {
