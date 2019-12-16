@@ -59,6 +59,8 @@ pipeline {
             stage('Deploy Application') {
          steps {
             echo '-----------------Deploying Application-------------------'
+            // Triggering another job 
+            //build ('Deploy')
             
          }
       }
