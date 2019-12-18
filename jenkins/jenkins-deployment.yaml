@@ -5,7 +5,10 @@ metadata:
   namespace: devops
 spec:
           
-  replicas: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jenkins
   template:
     metadata:
       labels:
@@ -32,7 +35,10 @@ metadata:
   namespace: devops
 spec:
           
-  replicas: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jira
   template:
     metadata:
       labels:
