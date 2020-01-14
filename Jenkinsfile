@@ -1,6 +1,6 @@
 pipeline {
    agent any
-  /* Triggering build every min
+  /* Triggering build every min seconds
   trigger {
       cron('* * * * *')
    }*/
